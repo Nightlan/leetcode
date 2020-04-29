@@ -27,26 +27,6 @@ func swapPairs(head *ListNode) *ListNode {
 	return result.Next
 }
 
-func swapPairs1(head *ListNode) *ListNode {
-	result := &ListNode{}
-	curRet := result
-	for head != nil {
-		next := head.Next
-		if next != nil {
-			tmpHead := next.Next
-			curRet = next
-			next.Next = head
-			curRet = head
-			head = tmpHead
-			curRet.Next = nil
-		} else {
-			curRet.Next = head
-			head = head.Next
-		}
-	}
-	return result.Next
-}
-
 func main() {
 	n1 := &ListNode{
 		Val: 1,
