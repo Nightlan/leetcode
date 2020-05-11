@@ -1,6 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+	"time"
+	"unsafe"
+)
 
 func test(arr []int) {
 	arr[1] = 1
@@ -11,6 +16,18 @@ const INT_MAX = int(^uint(0) >> 1)
 const INT_MIN = ^INT_MAX
 
 func main() {
+	byteStr := []byte("fffff我")
+	fmt.Println(string(byteStr))
+	strP := (*string)(unsafe.Pointer(&byteStr))
+	fmt.Println(*strP)
+	str1 := *strP
+	str1 = "e我333333"
+	str1 = string([]byte("fffd3333ffff我"))
+	h := (*reflect.StringHeader)(unsafe.Pointer(&str1))
+	fmt.Println(h.Data, h.Len)
+	str1 = *strP
+	fmt.Println(h.Data, h.Len)
+	fmt.Println(string(byteStr), str1, len(str1))
 	arr := []int{0, 0}
 	test(arr)
 	fmt.Println(arr)
@@ -25,4 +42,7 @@ func main() {
 	newNum = append(newNum, 80)
 	fmt.Println(myNum)
 	fmt.Println(newNum)
+	for {
+		time.Sleep(time.Second)
+	}
 }
