@@ -22,6 +22,9 @@ func main() {
 	fmt.Println(*strP)
 	str1 := *strP
 	str1 = "e我333333"
+	for i := 0; i < len(str1); i++ {
+		fmt.Println(str1[i])
+	}
 	str1 = string([]byte("fffd3333ffff我"))
 	h := (*reflect.StringHeader)(unsafe.Pointer(&str1))
 	fmt.Println(h.Data, h.Len)

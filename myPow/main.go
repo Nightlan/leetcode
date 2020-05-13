@@ -18,7 +18,7 @@ func myPow1(x float64, n int) float64 {
 	return res
 }
 
-func quickPow(x float64, n int) float64 {
+func quickPow1(x float64, n int) float64 {
 	if n == 0 {
 		return 1
 	}
@@ -30,6 +30,17 @@ func quickPow(x float64, n int) float64 {
 	return tmpRes * tmpRes
 }
 
+func quickPow(x float64, n int) float64 {
+	res := 1.0
+	for i := n; i > 0; i >>= 1 {
+		if i&1 == 1 {
+			res *= x
+		}
+		x *= x
+	}
+	return res
+}
+
 func myPow(x float64, n int) float64 {
 	if n > 0 {
 		return quickPow(x, n)
@@ -38,5 +49,5 @@ func myPow(x float64, n int) float64 {
 }
 
 func main() {
-	fmt.Println(myPow(2.0, -2))
+	fmt.Println(myPow(2.0, -3))
 }

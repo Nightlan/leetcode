@@ -15,13 +15,12 @@ func multiply(num1 string, num2 string) string {
 			res[i+j] += tmp / 10
 		}
 	}
-	for i := range res {
+	for i := 0; i < len(res); i++ {
 		if res[i] != '0' {
-			res = res[i:]
-			break
+			return string(res[i:])
 		}
 	}
-	return string(res)
+	return "0"
 }
 
 func main() {

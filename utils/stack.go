@@ -10,19 +10,19 @@ type Stack struct {
 	sum int
 }
 
-func NewStack(cap int)*Stack{
+func NewStack(cap int) *Stack {
 	return &Stack{
-		buf:make([]int,0, cap),
+		buf: make([]int, 0, cap),
 		sum: 0,
 	}
 }
 
-func (s *Stack)Push(value int){
+func (s *Stack) Push(value int) {
 	s.buf = append(s.buf, value)
 	s.sum += value
 }
 
-func (s *Stack)Pop()int{
+func (s *Stack) Pop() int {
 	if len(s.buf) == 0 {
 		return -1
 	}
@@ -32,18 +32,18 @@ func (s *Stack)Pop()int{
 	return value
 }
 
-func (s *Stack)Top()int{
+func (s *Stack) Top() int {
 	if len(s.buf) == 0 {
 		return -1
 	}
 	return s.buf[len(s.buf)-1]
 }
 
-func (s *Stack)Sum()int{
+func (s *Stack) Sum() int {
 	return s.sum
 }
 
-func (s *Stack)String()string{
+func (s *Stack) String() string {
 	var build strings.Builder
 	for i := range s.buf {
 		build.WriteString(strconv.Itoa(s.buf[i]))
@@ -52,4 +52,8 @@ func (s *Stack)String()string{
 		}
 	}
 	return build.String()
+}
+
+func (s *Stack) Buf() []int {
+	return s.buf
 }
