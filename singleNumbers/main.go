@@ -1,6 +1,8 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func singleNumbers(nums []int) []int {
 	ret := 0
@@ -17,6 +19,14 @@ func singleNumbers(nums []int) []int {
 		}
 	}
 	return result
+}
+
+func singleNumber(nums []int) int {
+	res := 0
+	for i := range nums {
+		res ^= nums[i]
+	}
+	return res
 }
 
 func main() {
