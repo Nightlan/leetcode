@@ -31,9 +31,6 @@ func firstMissingPositive(nums []int) int {
 	if len(nums) == 0 {
 		return 1
 	}
-	if len(nums) == 1 && nums[0] == 1 {
-		return 2
-	}
 	isExistOne := false
 	for i := range nums {
 		if nums[i] == 1 {
@@ -43,6 +40,9 @@ func firstMissingPositive(nums []int) int {
 	}
 	if !isExistOne {
 		return 1
+	}
+	if len(nums) == 1 {
+		return 2
 	}
 	mark := len(nums) + 1
 	for i := range nums {
