@@ -2,13 +2,6 @@ package main
 
 import "fmt"
 
-func min(a, b int) int {
-	if a <= b {
-		return a
-	}
-	return b
-}
-
 func spiralOrder(matrix [][]int) (res []int) {
 	height := len(matrix)
 	if height == 0 {
@@ -21,7 +14,7 @@ func spiralOrder(matrix [][]int) (res []int) {
 	res = make([]int, 0, height*width)
 	m := (width + 1) / 2
 	n := (height + 1) / 2
-	for i := 0; i < min(m, n); i++ {
+	for i := 0; i < m && i < n; i++ {
 		for j := i; j < width-i; j++ { // 上
 			res = append(res, matrix[i][j])
 		}
